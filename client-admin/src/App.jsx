@@ -28,6 +28,7 @@ function App() {
   
   function handleFormChange(event) {
     setForm({
+      ...form,
       [event.target.name]: event.target.value
     })
   }
@@ -36,7 +37,7 @@ function App() {
     event.preventDefault()
 
     try {
-      console.log(form)
+      // console.log(form)
       const completeForm = {
         id: posts.length+1,
         title: form.title,
@@ -61,9 +62,10 @@ function App() {
         throw new Error("Something went wrong")
       }
   
-      console.log(response.data)
+      console.log("sukses", response.data)
+      setPage("home")
     } catch (err) {
-      console.log(err)
+      console.log("error", err)
     }
 
   }
@@ -78,7 +80,7 @@ function App() {
       <>
       {/* Navbar */}
         <nav className="navbar" style={{backgroundColor: "#930000", width: "100"}}>
-          <div className="ms-2 mb-1 d-flex align-items-center">
+          <div className="ms-4 mb-1 d-flex align-items-center">
             <a className="" href="#">
               <img src={komporWhite} alt="KomporLogo" height="20"/>
             </a>
@@ -103,11 +105,12 @@ function App() {
         <form className='col-6' onSubmit={handleFormSubmit}>
           <div className="mb-3">
             <label className="form-label">Title</label>
-            <input type="text" className="form-control" id="" onChange={handleFormChange} name="title"/>
+            <input type="text" className="form-control" id="" onChange={handleFormChange} name="title" required/>
           </div>
           <div className="mb-3">
             <label className="form-label">Category</label><br />
-            <select name="categoryId" id="" onChange={handleFormChange}>
+            <select name="categoryId" id="" value={form.categoryId} onChange={handleFormChange} required>
+                <option value="" disabled>--Choose category--</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -115,7 +118,7 @@ function App() {
           </div>
           <div className="mb-3">
             <label className="form-label">Content</label><br />
-            <textarea className="col-12" name="content" id="" rows="10" onChange={handleFormChange}></textarea>
+            <textarea className="col-12" name="content" id="" rows="10" onChange={handleFormChange} required></textarea>
           </div>
           <div className="mb-3">
             <label className="form-label">Image URL</label>
@@ -137,7 +140,7 @@ function App() {
     <>
     {/* Navbar */}
       <nav className="navbar" style={{backgroundColor: "#930000", width: "100"}}>
-        <div className="ms-2 mb-1 d-flex align-items-center">
+        <div className="ms-4 mb-1 d-flex align-items-center">
           <a className="" href="#">
             <img src={komporWhite} alt="KomporLogo" height="20"/>
           </a>
