@@ -14,7 +14,7 @@ Struktur Folder:
 
 Target:
 
-- [ ] Lecture - React Intro
+- [v] Lecture - React Intro
 - [ ] React: Class Component vs Function Component
 - [ ] Mempelajari State menggunakan useState
 - [ ] Mengirim Props baik berupa sebuah state atau function
