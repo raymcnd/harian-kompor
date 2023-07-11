@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import PostRow from "../components/PostRow.jsx"
+import { useNavigate } from 'react-router'
 
 function PostsView() {
+    const navigate = useNavigate()
     const [posts, setPosts] = useState([])
 
     const fetchPosts = async () => {
@@ -20,7 +22,7 @@ function PostsView() {
             <div className='d-flex justify-content-between align-items-center'>
                 <h1>Posts</h1>
                 <span>
-                    <button type="button" className='btn btn-success' onClick={() => setPage("AddPost")}>New Post</button>
+                    <button type="button" className='btn btn-success' onClick={() => navigate("/posts/add")}>New Post</button>
                 </span>
             </div>
             <hr />
