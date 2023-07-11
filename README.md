@@ -17,13 +17,13 @@ Target:
 - [x] Lecture - React Intro
 - [x] React: Class Component vs Function Component
 - [x] Mempelajari State menggunakan useState
-- [ ] Mengirim Props baik berupa sebuah state atau function
+- [x] Mengirim Props baik berupa sebuah state atau function
 - [x] Event Handling (onClick, onChange, onSubmit)
 - [x] Conditional Rendering di dalam React
 - [x] Looping List of Data di dalam React
 - [x] Lifecycle component menggunakan useEffect
 - [x] Membuat server (json-server)
-- [ ] Membuat react app untuk client-user (Styling)
+- [x] Membuat react app untuk client-user (Styling)
 - [x] Membuat react app untuk client-admin (CRUD)
 - [x] Menentukan Thema Aplikasi
 - [x] Menentukan Design dan pemilihan CSS Framework
