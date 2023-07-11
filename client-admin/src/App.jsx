@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import komporWhite from "./assets/komporWhite.svg"
-// import './App.css'
+import Navbar from "./components/Navbar.jsx"
+import Sidebar from "./components/Sidebar.jsx"
+import PostsView from './views/PostsView.jsx'
+
 
 function App() {
-  const [posts, setPosts] = useState([])
   const [page, setPage] = useState("")
   const [form, setForm] = useState({
     title: "",
@@ -13,18 +12,6 @@ function App() {
     imgUrl: "",
     categoryId: "",
   })
-
-  const fetchPosts = async () => {
-    const response = await fetch("http://localhost:3000/posts");
-    const newPosts = await response.json();
-
-    setPosts(newPosts);
-  }
-  
-  function formatDate (date) {
-    return new Intl.DateTimeFormat('en-EN', { dateStyle: 'full',
-  timeStyle: "medium"}).format(new Date(date))
-  }
   
   function handleFormChange(event) {
     setForm({
@@ -69,11 +56,6 @@ function App() {
     }
 
   }
-
-  useEffect(() => {
-    fetchPosts()
-  }, [])
-
 
   if (page === "AddPost") {
     return (
@@ -132,68 +114,14 @@ function App() {
       </>
     )
   }
-  // useEffect(() => {
-  //   fetchPosts()
-  // }, [posts])
 
   return (
     <>
-    {/* Navbar */}
-      <nav className="navbar" style={{backgroundColor: "#930000", width: "100"}}>
-        <div className="ms-4 mb-1 d-flex align-items-center">
-          <a className="" href="#">
-            <img src={komporWhite} alt="KomporLogo" height="20"/>
-          </a>
-        </div>
-      </nav>
+    <Navbar />
 
-    <div className='d-flex' style={{width: "100", height: "100", backgroundColor: "#F1F0EA"}}>
-      {/* Sidebar */}
-      <div className='col-3 p-4' style={{maxWidth: "250px", height: "100", backgroundColor: "#E0DDCF"}}>
-        <span className='fw-bold' style={{fontSize: "0.85rem", color: "#575757"}}>MENU</span>
-        <ul className='navbar-nav ps-2'>
-          <li className='nav-item'><a className="nav-link" href="">Posts</a></li>
-          <li className='nav-item'><a className="nav-link" href="">Categories</a></li>
-          <li className='nav-item'><a className="nav-link" href="">Tags</a></li>
-        </ul>
-      </div>
-
-      {/* Posts */}
-      <div className="p-4 col-9" style={{height: "100", flexGrow: "1"}}>
-      <div className='d-flex justify-content-between align-items-center'>
-        <h1>Posts</h1>
-        <span>
-          <button type="button" className='btn btn-success' onClick={() => setPage("AddPost")}>New Post</button>
-        </span>
-      </div>
-      <hr />
-      <table className="table table-light">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Category</th>
-            <th scope="col">Content</th>
-            <th scope="col">Publish Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {posts.map((e, i) => {
-            return (
-              <tr key={i}>
-              <th scope="row">{i+1}</th>
-              <td>{e.title}</td>
-              <td>{e.authorId}</td>
-              <td>{e.categoryId}</td>
-              <td>{e.content.substring(0, 120) + " ..."}</td>
-              <td>{formatDate(e.createdAt)}</td>
-            </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      </div>
+    <div className='d-flex' style={{width: "100%", minHeight: "100vh", backgroundColor: "#F1F0EA"}}>
+      <Sidebar />
+      <PostsView />
     </div>
     
 
