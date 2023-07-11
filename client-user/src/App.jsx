@@ -2,7 +2,6 @@ import { useState } from 'react'
 import komporWhite from "./assets/komporWhite.svg"
 import komporMaroon from "./assets/komporMaroon.svg"
 import kWhite from "./assets/kWhite.svg"
-// import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -48,7 +47,7 @@ function App() {
             <h6 className='fw-bold' style={{color: "#930000"}}>Topik Panas 🔥</h6>
             <div className='d-flex mt-2' style={{width: "100%", gap: "2%"}}>
               <div className="card shadow" style={{width: "32%", backgroundColor: "#E0DDCF"}}>
-                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"100px"} />
+                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"100px"} width={"100%"} style={{objectFit: "cover"}}/>
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -56,7 +55,7 @@ function App() {
               </div>
 
               <div className="card shadow" style={{width: "32%", backgroundColor: "#E0DDCF"}}>
-                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"100px"} />
+                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"100px"} width={"100%"} style={{objectFit: "cover"}} />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -64,7 +63,7 @@ function App() {
               </div>
 
               <div className="card shadow" style={{width: "32%", backgroundColor: "#E0DDCF"}}>
-                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"100px"} />
+                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"100px"} width={"100%"} style={{objectFit: "cover"}} />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -76,7 +75,7 @@ function App() {
           <div className="mt-4" style={{ width: "100%" }}>            
             <div className='d-flex mt-2' style={{width: "100%", gap: "2%"}}>
               <div class="" style={{width: "20%"}}>
-                <h6 className='fw-bold' style={{color: "#930000"}}>Terkini</h6>
+                <h6 className='fw-bold mb-3' style={{color: "#930000"}}>Terkini</h6>
                 <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"80px"} />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
@@ -93,12 +92,29 @@ function App() {
               </div>
 
               <div className="" style={{width: "20%"}}>
-                <h6 className='fw-bold' style={{color: "#930000"}}>Rekomendasi</h6>
-                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"80px"} />
+                <h6 className='fw-bold mb-3' style={{color: "#930000"}}>Rekomendasi</h6>
+                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"80px"} width={"100%"} style={{objectFit: "cover"}} />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
+
+                <br />
+
+                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"80px"} width={"100%"} style={{objectFit: "cover"}} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+
+                <br />
+
+                <img src="https://picsum.photos/400" className="card-img-top" alt="..." height={"80px"} width={"100%"} style={{objectFit: "cover"}} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                
               </div>
             </div>
           </div>
