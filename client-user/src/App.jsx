@@ -2,10 +2,11 @@ import { useState } from 'react'
 import komporMaroon from "./assets/komporMaroon.svg"
 import Navbar from './components/Navbar'
 import CategoryNavigation from './components/CategoryNavigation'
-import HotPosts from './components/HotPosts'
-import RecentPosts from './components/RecentPosts'
-import HeadlinePost from './components/HeadlinePost'
-import RecommendedPosts from './components/RecommendedPosts'
+import MainPage from './views/MainPage'
+// import HotPosts from './components/HotPosts'
+// import RecentPosts from './components/RecentPosts'
+// import HeadlinePost from './components/HeadlinePost'
+// import RecommendedPosts from './components/RecommendedPosts'
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <img className="mt-4" src={komporMaroon} alt="" style={{width: "30%"}}/>
 
           <CategoryNavigation />
-          <HotPosts/>
+          <MainPage />
+          {/* <HotPosts/>
           
           <div className="mt-4" style={{ width: "100%", borderBottom: "1px solid #dec3c6" }}>            
             <div className='d-flex mt-2' style={{width: "100%", gap: "2%"}}>              
@@ -28,7 +30,7 @@ function App() {
               <HeadlinePost />
               <RecommendedPosts />
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>
