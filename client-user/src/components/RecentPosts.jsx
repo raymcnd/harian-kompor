@@ -1,13 +1,13 @@
 import SmallPostCard from "./SmallPostCard"
 
-function RecentPosts() {
+function RecentPosts({recentPosts}) {
     return (
         <div className="" style={{width: "20%"}}>
             <h6 className='fw-bold mb-2' style={{color: "#930000"}}>Terkini</h6>
 
             {
-                [0, 1, 2, 3, 4, 5].map(e => {
-                    return <SmallPostCard />
+                recentPosts.map((post, i) => {
+                    return <SmallPostCard post={post} key={i}/>
                 })
             }
         </div>
