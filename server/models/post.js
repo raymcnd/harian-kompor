@@ -13,13 +13,34 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Post.belongsTo(models.User, {foreignKey: "authorId"})
       Post.belongsTo(models.Category, {foreignKey: "categoryId"})
-      Post.hasMany(models.Tag)
+      Post.hasMany(models.Tag, {foreignKey: "postId"})
     }
   }
   Post.init({
-    title: DataTypes.STRING,
-    slug: DataTypes.STRING,
-    content: DataTypes.TEXT,
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true
+      }
+    },
+    slug: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true
+      }
+    },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true
+      }
+    },
     imgUrl: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
     authorId: DataTypes.INTEGER
@@ -27,5 +48,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Post',
   });
+  Post.addHook("beforeCreate", (post, options) => {
+    post.slug = post.title.split(" ").join("-")
+  })
   return Post;
 };

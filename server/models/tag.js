@@ -11,12 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Tag.belongsTo(models.Post)
+      Tag.belongsTo(models.Post, {foreignKey: "postId"})
     }
   }
   Tag.init({
     postId: DataTypes.INTEGER,
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true
+      }
+    },
   }, {
     sequelize,
     modelName: 'Tag',
