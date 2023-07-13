@@ -224,7 +224,7 @@
       "title": "Akibat Salah Pasang Foto Terkait Pembunuhan Bayi, Seorang Biduan Melaporkan Salah Satu Media Online Terkenal",
       "slug": "Akibat-Salah-Pasang-Foto-Terkait-Pembunuhan-Bayi,-Seorang-Biduan-Melaporkan-Salah-Satu-Media-Online-Terkenal",
       "content": "Telah terjadi peristiwa aras kekeliruan informasi yang diketahui oleh VA pada Minggu (11/6/2023) ketika dirinya tiba-tiba dihubungi banyak kerabat dan teman-temannya.\n\nHariyanto selaku pengacara VA menjelaskan, pada saat itu rekan-rekan kliennya tiba-tiba menanyakan terkait kebenaran informasi yang muncul dari sebuah media tersebut kepada korban.\n\n\"Minggu pagi muncul beritanya dan itu jadi menyebar ke mana mana. Di tiktok, instagram, media online dan sebagainya,\" jelasnya.\n\nDalam pelaporannya, Hariyanto bersama korban sudah menyiapkan barang bukti screenshot foto VA yang dimuat di media terlapor.\n\n\"Barang bukti beberapa screenshot media menampilkan sosok biduan yang bukan pelakunya tapi narasinya pembunuhan,\" tegasnya.\n\nAkibat fotonya yang dimuat di sebuah media mainstream dengan narasi sebagai pelaku pembunuhan bayi, diakui VA berdampak kepada kondisi psikis dirinya.\n\nIa merasa tertekan setelah foto dengan narasi merugikan itu tersebar dan diketahui oleh keluarga dan tetangganya.\n\n\"Aku rugi gak cuma ke aku. Keluarga, sanak saudara kena dampak juga. Keluar rumah ada rasa malu. Sekitar rumahku udah tahu juga soal berita (bohong itu),\" jelasnya.",
-      "imgUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPdnJVBMJwiSceTfTYQ1akcwrCGERn-SDflf_y8ni6k1rFmB2fR8D5zLjKlUzGfBT0EfGXba21eUCAhaT9yJS8KFPkjPAoaNEHv0P3RS0IbotAiUd5No6TgTO5Hyib1SQ4s5b8Bjg2kUNPdqBLBW6iH0aJ5j9-advQmHsxBHKD-CkoFHSOu1WBk1Kg/s16000/IMG-20230617-WA0001.jpg",
+      "imgUrl": "https://asset-2.tstatic.net/jogja/foto/bank/images/Fotonya-Dijadikan-Ilustrasi-Pembunuh-Bayi-Biduan-di-Jogja-Laporkan-Kru-Media-Nasional-ke-Polda-DIY.jpg",
       "createdAt": "2023-07-11T09:28:49.147Z",
       "updatedAt": "2023-07-11T09:28:49.147Z",
       "categoryId": 1,
@@ -232,7 +232,7 @@
       "id": 21
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": 1,
       "name": "Category 1",
@@ -250,6 +250,30 @@
       "name": "Category 3",
       "createdAt": "2023-07-09T01:03:44Z",
       "updatedAt": "2023-07-09T01:03:44Z"
+    },
+    {
+        "id": 4,
+        "name": "Category 4",
+        "createdAt": "2023-07-09T01:03:44Z",
+        "updatedAt": "2023-07-09T01:03:44Z"
+    },
+    {
+        "id": 5,
+        "name": "Category 5",
+        "createdAt": "2023-07-09T01:03:44Z",
+        "updatedAt": "2023-07-09T01:03:44Z"
+    },
+    {
+        "id": 6,
+        "name": "Category 6",
+        "createdAt": "2023-07-09T01:03:44Z",
+        "updatedAt": "2023-07-09T01:03:44Z"
+    },
+    {
+        "id": 7,
+        "name": "Category 7",
+        "createdAt": "2023-07-09T01:03:44Z",
+        "updatedAt": "2023-07-09T01:03:44Z"
     }
   ],
   "tags": [
@@ -281,7 +305,7 @@
       "username": "user1",
       "email": "user1@mail.com",
       "password": 1,
-      "role": "role",
+      "role": "admin",
       "phoneNumber": "0812345678",
       "address": "Somewhere",
       "createdAt": "2023-07-09T01:03:44Z",
@@ -292,7 +316,7 @@
       "username": "user2",
       "email": "user2@mail.com",
       "password": 2,
-      "role": "role",
+      "role": "user",
       "phoneNumber": "08123456789",
       "address": "Somewhere",
       "createdAt": "2023-07-09T01:03:44Z",
@@ -303,7 +327,7 @@
       "username": "user3",
       "email": "user3@mail.com",
       "password": 3,
-      "role": "role",
+      "role": "user",
       "phoneNumber": "081234567890",
       "address": "Somewhere",
       "createdAt": "2023-07-09T01:03:44Z",
