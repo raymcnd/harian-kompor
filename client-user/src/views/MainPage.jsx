@@ -4,16 +4,15 @@ import HeadlinePost from '../components/HeadlinePost'
 import RecommendedPosts from '../components/RecommendedPosts'
 import { useState, useEffect } from 'react'
 import { func } from 'prop-types'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPosts, fetchPostsSuccess } from '../store/actions/actionCreator'
 
 function MainPage() {
-    const [posts, setPosts] = useState([])
-
-    const fetchPosts = async () => {
-        const response = await fetch("http://localhost:3000/posts");
-        const newPosts = await response.json();
-
-        setPosts(newPosts);
-    }
+    // const [posts, setPosts] = useState([])
+    const dispatch = useDispatch()
+    const posts = useSelector((state) => {
+        return state.post.data
+    })
 
     function getHotPosts() {
         const hotPosts = []
@@ -53,7 +52,7 @@ function MainPage() {
     }
 
     useEffect(() => {
-        fetchPosts()
+        dispatch(fetchPosts())
       }, [])
 
     return (
