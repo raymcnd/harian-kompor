@@ -14,7 +14,7 @@ router.get("/posts", authentication, Controller.readPosts);
 router.post("/posts", authentication, Controller.addPost);
 router.get("/posts/:id", authentication, Controller.readPostById);
 router.put("/posts/:id", authentication, Controller.editPost);
-router.delete("/delete/:id", authentication, Controller.deletePost);
+router.delete("/posts/:id", authentication, Controller.deletePost);
 router.get("/categories", authentication, Controller.readCategories);
 router.post("/categories", authentication, Controller.addCategory);
 router.put("/categories/:id", authentication, Controller.editCategory);
