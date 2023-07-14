@@ -25,6 +25,10 @@ function errorHandler(err, req, res, next) {
             codeStatus = 401;
             errorMsg = "Invalid token";
             break;
+        case "NotFound":
+            codeStatus = 404;
+            errorMsg = "Data not found";
+            break;
         default:
             codeStatus = 500;
             errorMsg = "Internal server error";

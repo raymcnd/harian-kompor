@@ -51,5 +51,9 @@ module.exports = (sequelize, DataTypes) => {
   Post.addHook("beforeCreate", (post, options) => {
     post.slug = post.title.split(" ").join("-")
   })
+
+  Post.addHook("beforeUpdate", (post, options) => {
+    post.slug = post.title.split(" ").join("-")
+  })
   return Post;
 };

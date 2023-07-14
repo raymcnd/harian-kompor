@@ -1,4 +1,4 @@
-const { User, Post, Tag, sequelize } = require("../models");
+const { User, Category, Post, Tag, sequelize } = require("../models");
 const { comparePassword } = require ("../helpers/bcryptHelper");
 const { signToken } = require("../helpers/jwtHelper");
 
@@ -75,9 +75,99 @@ class Controller {
 
     static async readPostById(req, res, next) {
         try {
-            
+            const {id} = req.params;
+            const data = await Post.findByPk(id);
+            if (!data) throw {name: "NotFound"};
+
+            res.status(200).json(data)
         } catch (err) {
+            next(err)
+        }
+    }
+
+    static async editPost(req, res, next) {
+        try {
+            const {id} = req.params.id;
+            const {title, content, imgUrl, categoryId, tags} = req.body;
+            const data = await Post.findByPk(id);
+            if (!data) throw {name: "NotFound"};
+
+            await data.update({title, content, imgUrl, categoryId});
             
+            await Tag.destroy({where: {
+                postId: id
+            }})
+            const tagsObj = tags.map(e => {
+                return {
+                    postId: id,
+                    name: e
+                }
+            })
+            await Tag.bulkCreate(tagsObj)
+
+            res.status(200).json({message: `Post #${id} updated`});
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async deletePost(req, res, next) {
+        try {
+            const {id} = req.params.id;
+            const data = await Post.findByPk(id);
+            if (!data) throw {name: "NotFound"};
+
+            await data.destroy();
+
+            res.status(200).json({message: `Post #${id} deleted`});
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async readCategories(req, res, next) {
+        try {
+            const data = await Category.findAll()
+            res.status(200).json(data)
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async addCategory(req, res, next) {
+        try {
+            const { name } = req.body;
+            const newCategory = await Category.create({name});
+            res.status(201).json({message: `New category #${newCategory.id} added`})
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async editCategory(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { name } = req.body;
+            const data = await Category.findByPk(id);
+            if (!data) throw {name: "NotFound"};
+
+            await data.update({ name })
+
+            res.status(200).json({message: `Category #${id} updated`})
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async deleteCategory(req, res, next) {
+        try {
+            const { id } = req.params;
+            const data = await Category.findByPk(id);
+            if (!data) throw {name: "NotFound"};
+            data.destroy();
+            res.status(200).json({message: `Category #${id} deleted`})
+        } catch (err) {
+            next(err)
         }
     }
 }
