@@ -87,10 +87,12 @@ class Controller {
 
     static async editPost(req, res, next) {
         try {
-            const {id} = req.params.id;
+            const {id} = req.params;
             const {title, content, imgUrl, categoryId, tags} = req.body;
             const data = await Post.findByPk(id);
+
             if (!data) throw {name: "NotFound"};
+            
 
             await data.update({title, content, imgUrl, categoryId});
             
@@ -113,7 +115,7 @@ class Controller {
 
     static async deletePost(req, res, next) {
         try {
-            const {id} = req.params.id;
+            const {id} = req.params;
             const data = await Post.findByPk(id);
             if (!data) throw {name: "NotFound"};
 
