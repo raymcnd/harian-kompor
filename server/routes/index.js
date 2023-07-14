@@ -18,5 +18,6 @@ router.delete("/posts/:id", authentication, Controller.deletePost);
 router.get("/categories", authentication, Controller.readCategories);
 router.post("/categories", authentication, Controller.addCategory);
 router.put("/categories/:id", authentication, Controller.editCategory);
+router.delete("/categories/:id", authentication, Controller.deleteCategory);
 
 module.exports = router

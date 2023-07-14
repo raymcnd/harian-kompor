@@ -150,6 +150,8 @@ class Controller {
         try {
             const { id } = req.params;
             const { name } = req.body;
+            console.log(name)
+            console.log({name})
             const data = await Category.findByPk(id);
             if (!data) throw {name: "NotFound"};
 
