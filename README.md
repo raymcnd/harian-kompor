@@ -42,9 +42,9 @@ Target:
 - [x] Lecture - Custom Hooks
 - [x] Rules of Hooks
 - [x] Lecture - React-Router
-- [ ] Membuat router user-side (min: home, detail)
-- [ ] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
-- [ ] Membuat privateRoute untuk admin
+- [x] Membuat router user-side (min: home, detail)
+- [x] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
+- [x] Membuat privateRoute untuk admin
 
 **Report:**
 
@@ -72,11 +72,11 @@ Target:
 
 Target:
 
-- [ ] Lecture - SQL Transaction
-- [ ] Membuat server mengguanakan express.js, postgreSQL dan Sequelize
-- [ ] Menentukan associations antar tables
-- [ ] Lecture - AWS EC2
-- [ ] Membuat transaction saat membuat entitas baru pada main table. Pastikan ada assosiasi di dalamnya
+- [x] Lecture - SQL Transaction
+- [x] Membuat server mengguanakan express.js, postgreSQL dan Sequelize
+- [x] Menentukan associations antar tables
+- [x] Lecture - AWS EC2
+- [x] Membuat transaction saat membuat entitas baru pada main table. Pastikan ada assosiasi di dalamnya
 
 **Report:**
 
@@ -86,8 +86,8 @@ Target:
 
 Target:
 
-- [ ] LC Simulation
-- [ ] Practice, Practice, Practice
+- [x] LC Simulation
+- [x] Practice, Practice, Practice
 
 **Report:**
 
