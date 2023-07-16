@@ -20,11 +20,11 @@ export const fetchPosts = () => {
                     access_token: localStorage.access_token
                 }
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
             const newPosts = await response.json();
             dispatch(fetchPostsSuccess(newPosts));
         } catch (err) {
-            console.log(err)
+            throw err
         }
     }
 }
@@ -41,7 +41,8 @@ export const submitAddPost = (formData) => {
                 body: JSON.stringify(formData)
                 })
 
-            if (!response.ok) throw new Error("Something went wrong")
+            if (!response.ok) throw await response.json()
+
         } catch (err) {
             throw err
         }
@@ -63,7 +64,7 @@ export const fetchPostById = (id) => {
                     access_token: localStorage.access_token
                 }
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
             const post = await response.json()
             dispatch(fetchPostByIdSuccess(post))
         } catch (err) {
@@ -83,7 +84,7 @@ export const submitEditPost = (id, formData) => {
                 },
                 body: JSON.stringify(formData)
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
         } catch (err) {
             throw err
         }
@@ -99,7 +100,7 @@ export const deletePost = (id) => {
                     access_token: localStorage.access_token,
                 }
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
         } catch (err) {
             throw err
         }
@@ -123,11 +124,11 @@ export const fetchCategories = () => {
                     access_token: localStorage.access_token
                 }
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
             const newCategories = await response.json()
             dispatch(fetchCategoriesSuccess(newCategories))
         } catch (err) {
-            console.log(err)
+            throw err
         }
     }
 }
@@ -143,7 +144,7 @@ export const submitAddCategory = (formData) => {
                 },
                 body: JSON.stringify(formData)
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
         } catch (err) {
             throw err
         }
@@ -165,7 +166,8 @@ export const fetchCategoryById = (id) => {
                     access_token: localStorage.access_token
                 }
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
+
             const category = await response.json()
             dispatch(fetchCategoryByIdSuccess(category))
         } catch (err) {
@@ -185,7 +187,8 @@ export const submitEditCategory = (id, formData) => {
                 },
                 body: JSON.stringify(formData)
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
+
         } catch (err) {
             throw err
         }
@@ -201,7 +204,8 @@ export const deleteCategory = (id) => {
                     access_token: localStorage.access_token
                 }
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
+
         } catch (err) {
             throw err
         }
@@ -213,7 +217,6 @@ export const deleteCategory = (id) => {
 export const registerAdmin = (formData) => {
     return async (dispatch, getState) => {
         try {
-            console.log("json >>>>", JSON.stringify(formData))
             const response = await fetch(baseUrl + "/register", {
                 method: "POST",
                 headers: {
@@ -222,7 +225,7 @@ export const registerAdmin = (formData) => {
                 },
                 body: JSON.stringify(formData)
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
         } catch (err) {
             throw err
         }
@@ -239,7 +242,7 @@ export const loginAdmin = (formData) => {
                 },
                 body: JSON.stringify(formData)
             })
-            if (!response.ok) throw {message: "Something went wrong"}
+            if (!response.ok) throw await response.json()
             const {access_token} = await response.json()
             localStorage.access_token = access_token
         } catch (err) {

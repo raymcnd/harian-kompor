@@ -15,6 +15,31 @@ function RegisterAdmin() {
         address: ""
     })
 
+    // Sweet Alert
+    function showSuccess(msg) {
+        Swal.fire({
+                position: 'top',
+                toast: true,
+                icon: 'success',
+                title: msg,
+                showConfirmButton: false,
+                timerProgressBar: true,
+                timer: 3500
+        });
+    }
+
+    function showError(err) {
+        try {
+          Swal.fire({
+            icon: 'error',
+            title: err.message
+          })
+        } catch (error) {
+          console.log(error)
+        }
+    }
+    // End of Sweet Alert
+
     function handleFormChange(event) {
         setFormData({
             ...formData,
@@ -26,11 +51,11 @@ function RegisterAdmin() {
         event.preventDefault()
         dispatch(registerAdmin(formData))
             .then(() => {
-                console.log("Register Success")
+                showSuccess("Register Success")
                 document.getElementById("registerAdminForm").reset();
             })
             .catch((err) => {
-                console.log(err)
+                showError(err)
             })
     }
 

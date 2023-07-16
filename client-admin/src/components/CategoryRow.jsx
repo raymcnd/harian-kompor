@@ -10,13 +10,39 @@ function CategoryRow({item, i}) {
           timeStyle: "medium"}).format(new Date(date))
     }
 
+    // Sweet Alert
+    function showSuccess(msg) {
+        Swal.fire({
+                position: 'top',
+                toast: true,
+                icon: 'success',
+                title: msg,
+                showConfirmButton: false,
+                timerProgressBar: true,
+                timer: 3500
+        });
+    }
+
+    function showError(err) {
+        try {
+            Swal.fire({
+            icon: 'error',
+            title: err.message
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    // End of Sweet Alert
+
     function handleDelete() {
         dispatch(deleteCategory(item.id))
             .then(() => {
                 dispatch(fetchCategories())
+                showSuccess(`Category #${item.id} deleted`)
             })
             .catch((err) => {
-                console.log(err)
+                showError(err)
             })
     }
 
