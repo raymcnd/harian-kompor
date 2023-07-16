@@ -2,26 +2,25 @@ import { useState } from 'react'
 import komporMaroon from "./assets/komporMaroon.svg"
 import Navbar from './components/Navbar'
 import CategoryNavigation from './components/CategoryNavigation'
-import MainPage from './views/MainPage'
-// import HotPosts from './components/HotPosts'
-// import RecentPosts from './components/RecentPosts'
-// import HeadlinePost from './components/HeadlinePost'
-// import RecommendedPosts from './components/RecommendedPosts'
-
+import { Link, Outlet } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const navigate = useNavigate()
   return (
     <>
       <Navbar />
 
       <div className='d-flex justify-content-center pb-5' style={{width: "100%", minHeight: "100vh"}}>
         <div className="col-10 d-flex flex-column align-items-center" style={{maxWidth: "1200px", backgroundColor: "#F1F0EA"}}>
-          <img className="mt-4" src={komporMaroon} alt="" style={{width: "30%"}}/>
+          
+          <Link className="mt-4" style={{width: "30%"}}>
+            <img  src={komporMaroon} alt="" style={{width: "100%"}}/>
+          </Link>
 
           <CategoryNavigation />
-          <MainPage />
+          <Outlet />
           {/* <HotPosts/>
           
           <div className="mt-4" style={{ width: "100%", borderBottom: "1px solid #dec3c6" }}>            

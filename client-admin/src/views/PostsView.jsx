@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react'
 import PostRow from "../components/PostRow.jsx"
 import { useNavigate } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPosts } from '../store/actions/actionCreator.js'
 
 function PostsView() {
     const navigate = useNavigate()
-    const [posts, setPosts] = useState([])
+    const dispatch = useDispatch()
 
-    const fetchPosts = async () => {
-        const response = await fetch("http://localhost:3000/posts");
-        const newPosts = await response.json();
-
-        setPosts(newPosts);
-    }
+    const posts = useSelector((state) => {
+        return state.post.data
+    })
 
     useEffect(() => {
-        fetchPosts()
+        dispatch(fetchPosts())
       }, [])
 
     return (
@@ -22,7 +21,7 @@ function PostsView() {
             <div className='d-flex justify-content-between align-items-center'>
                 <h1>Posts</h1>
                 <span>
-                    <button type="button" className='btn btn-success' onClick={() => navigate("/posts/add")}>New Post</button>
+                    <button type="button" className='btn btn-success fw-semibold' onClick={() => navigate("/posts/add")}>New Post</button>
                 </span>
             </div>
             <hr />
@@ -35,6 +34,8 @@ function PostsView() {
                 <th scope="col">Category</th>
                 <th scope="col">Content</th>
                 <th scope="col">Publish Date</th>
+                <th scope='col'>Tags</th>
+                <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
