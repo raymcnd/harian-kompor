@@ -11,6 +11,12 @@ const router = createBrowserRouter([
         {
             path: "/",
             element: <App />,
+            loader: () => {
+                if (!localStorage.access_token) {
+                    return redirect("/login")
+                }
+                return null
+            },
             children: [
                 {
                     path: "",
@@ -48,7 +54,13 @@ const router = createBrowserRouter([
         },
         {
             path: "/login",
-            element: <LoginView />
+            element: <LoginView />,
+            loader: () => {
+                if (localStorage.access_token) {
+                    return redirect("/")
+                }
+                return null
+            }
         },
     ]);
 
