@@ -29,6 +29,31 @@ function PostForm() {
         return state.post.byId
     })
 
+    // Sweet Alert
+    function showSuccess(msg) {
+        Swal.fire({
+                position: 'top',
+                toast: true,
+                icon: 'success',
+                title: msg,
+                showConfirmButton: false,
+                timerProgressBar: true,
+                timer: 3500
+        });
+    }
+
+    function showError(err) {
+        try {
+            Swal.fire({
+            icon: 'error',
+            title: err.message
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    // End of Sweet Alert
+
     function handleFormChange(event) {
         setForm({
             ...form,
@@ -74,17 +99,19 @@ function PostForm() {
             dispatch(submitAddPost(formData))
             .then(() => {
                 navigate("/")
+                showSuccess("New Post Added")
             })
             .catch((err) => {
-                console.log(err)
+                showError(err)
             })
         } else {
             dispatch(submitEditPost(paramsId, formData))
             .then(() => {
                 navigate("/")
+                showSuccess("Post Updated")
             })
             .catch((err) => {
-                console.log(err)
+                showError(err)
             })
         }
 
@@ -118,9 +145,6 @@ function PostForm() {
             })
         }
     }, [postById])
-
-    console.log(form)
-    // console.log(postById)
 
     return (
         <div className="p-4 col-9" style={{height: "100", flexGrow: "1"}}>

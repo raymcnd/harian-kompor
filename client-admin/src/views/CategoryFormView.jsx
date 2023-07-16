@@ -9,7 +9,7 @@ function CategoryFormView() {
         return state.category.byId
     })
     const [categoryName, setCategoryName] = useState("")
-    const [isLoaded, setIsLoaded] = useState(false)
+    // const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { id } = useParams()
@@ -21,6 +21,31 @@ function CategoryFormView() {
             return "Edit Category"
         }
     }
+
+    // Sweet Alert
+    function showSuccess(msg) {
+        Swal.fire({
+                position: 'top',
+                toast: true,
+                icon: 'success',
+                title: msg,
+                showConfirmButton: false,
+                timerProgressBar: true,
+                timer: 3500
+        });
+    }
+
+    function showError(err) {
+        try {
+            Swal.fire({
+            icon: 'error',
+            title: err.message
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    // End of Sweet Alert
 
     function handleFormChange(event) {
         setCategoryName(event.target.value)
@@ -34,9 +59,10 @@ function CategoryFormView() {
             }))
             .then(() => {
                 navigate("/categories")
+                showSuccess("New category added")
             })
             .catch((err) => {
-                console.log(err)
+                showError(err)
             })
         } else {
             dispatch(submitEditCategory(id, {
@@ -44,19 +70,18 @@ function CategoryFormView() {
             }))
             .then(() => {
                 navigate("/categories")
+                showSuccess("Category updated")
+
             })
             .catch((err) => {
-                console.log(err)
+                showError(err)
             })
         }
     }
 
     useEffect(() => {
-        if (location.pathname !== "/categories/add" && !isLoaded) {
+        if (location.pathname !== "/categories/add") {
             dispatch(fetchCategoryById(id))
-                .then(() => {
-                    setIsLoaded(true)
-                })
                 .catch((err) => {
                     console.log(err)
                 })
@@ -64,12 +89,10 @@ function CategoryFormView() {
     }, [])
 
     useEffect(() => {
-        if (location.pathname !== "/categories/add" && isLoaded) {
+        if (location.pathname !== "/categories/add") {
             setCategoryName(categoryById.name)
         }
     }, [categoryById])
-
-    console.log("mount")
 
     return (
         <div className="p-4 col-9" style={{height: "100", flexGrow: "1"}}>
