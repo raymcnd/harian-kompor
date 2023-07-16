@@ -1,6 +1,8 @@
 import { FETCH_POSTS_SUCCESS, FETCH_POST_SUCCESS } from "./actionType"
 
-const baseUrl = "http://localhost:3000/pub"
+// const baseUrl = "http://localhost:3000/pub"
+const baseUrl = "https://kompor.raymcnd.space/pub"
+
 
 export const fetchPostsSuccess = (payload) => {
     return {
