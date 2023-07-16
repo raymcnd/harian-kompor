@@ -41,7 +41,23 @@ class Controller {
 
     static async readPosts(req, res, next) {
         try {
-            const data = await Post.findAll()
+            const data = await Post.findAll({
+                order: [["createdAt", "DESC"]],
+                include: [
+                    {
+                        model: User,
+                        attributes: {exclude: ['createdAt', 'updatedAt']}
+                    },
+                    {
+                        model: Category,
+                        attributes: {exclude: ['createdAt', 'updatedAt']}
+                    },
+                    {
+                        model: Tag,
+                        attributes: {exclude: ['createdAt', 'updatedAt']}
+                    }
+                ]
+            })
             res.status(200).json(data)
         } catch (err) {
             next(err)
@@ -53,8 +69,13 @@ class Controller {
         try {
             const {title, content, imgUrl, categoryId, tags} = req.body
             const authorId = req.user.id
+            
+            let slug = ""
+            if (title) {
+                slug = title.split(" ").join("-")
+            }
 
-            const newPost = await Post.create({title, content, imgUrl, categoryId, authorId}, {transaction})
+            const newPost = await Post.create({title, slug, content, imgUrl, categoryId, authorId}, {transaction})
             const tagsToCreate = tags.map(e => {
                 return {
                     name: e,
@@ -76,7 +97,9 @@ class Controller {
     static async readPostById(req, res, next) {
         try {
             const {id} = req.params;
-            const data = await Post.findByPk(id);
+            const data = await Post.findByPk(id, {
+                include: Tag
+            });
             if (!data) throw {name: "NotFound"};
 
             res.status(200).json(data)
@@ -93,8 +116,12 @@ class Controller {
 
             if (!data) throw {name: "NotFound"};
             
+            let slug = ""
+            if (title) {
+                slug = title.split(" ").join("-")
+            }
 
-            await data.update({title, content, imgUrl, categoryId});
+            await data.update({title, slug, content, imgUrl, categoryId});
             
             await Tag.destroy({where: {
                 postId: id
@@ -129,7 +156,9 @@ class Controller {
 
     static async readCategories(req, res, next) {
         try {
-            const data = await Category.findAll()
+            const data = await Category.findAll({
+                order: [["id", "ASC"]]
+            })
             res.status(200).json(data)
         } catch (err) {
             next(err)
@@ -141,6 +170,17 @@ class Controller {
             const { name } = req.body;
             const newCategory = await Category.create({name});
             res.status(201).json({message: `New category #${newCategory.id} added`})
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async readCategoryById(req, res, next) {
+        try {
+            const { id } = req.params
+            const data = await Category.findByPk(id)
+            if (!data) throw {name: "NotFound"}
+            res.status(200).json(data)
         } catch (err) {
             next(err)
         }
@@ -174,6 +214,7 @@ class Controller {
             next(err)
         }
     }
+
 }
 
 module.exports = Controller

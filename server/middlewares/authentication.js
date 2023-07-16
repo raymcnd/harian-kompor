@@ -7,6 +7,7 @@ async function authentication(req, res, next) {
         const payload =  verifyToken(access_token);
         const targetUser = await User.findByPk(payload.id);
         if (!targetUser) throw {name: "NotAuthenticated"};
+        req.user = payload
         next();
     } catch (err) {
         next(err)
