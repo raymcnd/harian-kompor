@@ -25,8 +25,6 @@ class Controller {
             if (!targetUser) throw {name: "InvalidEmailPassword"};
             const isPasswordMatch = comparePassword(password, targetUser.password);
             if (!isPasswordMatch) throw {name: "InvalidEmailPassword"};
-            const isAdmin = targetUser.role === 'admin';
-            if (!isAdmin) throw {name: "InvalidEmailPassword"}
             
             const access_token = signToken({
                 id: targetUser.id,

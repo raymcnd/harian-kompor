@@ -29,6 +29,10 @@ function errorHandler(err, req, res, next) {
             codeStatus = 404;
             errorMsg = "Data not found";
             break;
+        case "Forbidden":
+            codeStatus = 403;
+            errorMsg = "Unauthorized";
+            break;
         default:
             codeStatus = 500;
             errorMsg = "Internal server error";
