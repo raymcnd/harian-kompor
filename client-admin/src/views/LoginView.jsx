@@ -71,11 +71,11 @@ function LoginView() {
                 <form className="" onSubmit={handleFormSubmit}>
                     <div className="mb-2">
                         <label htmlFor="" className="form-label">Email</label>
-                        <input type="email" name="email" className="form-control" onChange={handleFormChange}></input>
+                        <input type="email" name="email" className="form-control" onChange={handleFormChange} placeholder="view-only user: user3@mail.com"></input>
                     </div>
                     <div className="mb-2">
                         <label htmlFor="" className="form-label">Password</label>
-                        <input type="password" name="password" className="form-control" onChange={handleFormChange}></input>
+                        <input type="password" name="password" className="form-control" onChange={handleFormChange} placeholder="view-only user: 3"></input>
                     </div>
 
                     <button type="submit" className="btn btn-success mt-4" style={{width: "100%"}}>Sign In</button>
