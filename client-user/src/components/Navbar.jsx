@@ -12,8 +12,8 @@ function Navbar() {
                 </Link>
 
                 <div className="d-flex justify-content-center align-items-center" style={{width: "33%", gap: "30px"}}>
-                    <a href="https://github.com/raymcnd/harian-kompor" className="d-flex align-items-center"><img src={githublogo} alt="KomporLogo" height="20"/></a>   
-                    <a className="nav-link text-white fw-semibold" href="https://hariankompor-cms.web.app/">CMS</a>
+                    <a href="https://github.com/raymcnd/harian-kompor" className="d-flex align-items-center" target="_blank"><img src={githublogo} alt="KomporLogo" height="20"/></a>   
+                    <a className="nav-link text-white fw-semibold" href="https://hariankompor-cms.web.app/" target="_blank">CMS</a>
                 </div>
 
                 <div className="d-flex justify-content-end align-items-center" style={{width: "33%", gap: "15px"}}>
